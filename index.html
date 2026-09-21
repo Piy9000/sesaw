@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Balance Challenge</title>
+
+    <!-- No external font/CDN links — this runs fully offline, so we rely on
+         the operating system's built-in fonts (see the font-family stack
+         in style.css). -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<div class="container">
+
+    <!-- HOME PAGE -->
+    <div class="glass" id="home">
+
+        <h1 class="logo">AI BALANCE CHALLENGE</h1>
+
+        <p class="subtitle">
+            Solve it. Weigh it. Balance it.
+        </p>
+
+        <div class="input-group">
+            <input
+                type="text"
+                placeholder="Enter Participant Name"
+                id="playerName">
+        </div>
+
+        <div style="text-align:center">
+            <button class="start-btn" onclick="showChallenges()">
+                START CHALLENGE
+            </button>
+
+            <button class="verify-btn end-btn" onclick="openLeaderboard()">
+                LEADERBOARD
+            </button>
+
+            <button class="verify-btn end-btn" onclick="recalibrate()">
+                RECALIBRATE
+            </button>
+        </div>
+
+    </div>
+
+    <!-- CHALLENGE PAGE -->
+
+    <div class="glass hidden" id="challengePage">
+
+        <h1 class="logo">SELECT CHALLENGE</h1>
+
+        <div class="challenge-grid">
+
+            <div class="card" onclick="startGame(1)">
+                <h3>Mission 1</h3>
+                <p>Hook It Right!</p>
+            </div>
+
+            <div class="card" onclick="startGame(2)">
+                <h3>Mission 2</h3>
+                <p>Crack the Weight!</p>
+            </div>
+
+            <div class="card" onclick="startGame(3)">
+                <h3>Mission 3</h3>
+                <p>Master the Balance!</p>
+            </div>
+
+        </div>
+
+        <div style="text-align:center;margin-top:14px">
+            <button class="verify-btn end-btn" onclick="goHome()">
+                BACK
+            </button>
+        </div>
+
+    </div>
+
+    <!-- GAME PAGE -->
+
+    <div class="glass hidden" id="gamePage">
+
+        <div class="topbar">
+
+            <div class="topbox">
+                Score:
+                <span id="score">0</span>
+            </div>
+
+            <div class="topbox">
+                Question:
+                <span id="questionNumber">1</span>/<span id="questionTotal">2</span>
+            </div>
+
+            <div class="topbox">
+                Time:
+                <span id="timer">00:00</span>
+            </div>
+
+        </div>
+
+        <div class="question" id="questionText">
+
+        </div>
+
+        <div class="options" id="optionsContainer">
+
+        </div>
+
+        <p class="hint-text" id="hintText">
+            Select your answer, hang the matching weight on the seesaw, then verify.
+        </p>
+
+        <div style="text-align:center">
+
+            <button class="verify-btn" id="verifyBtn" onclick="checkAnswer()">
+                VERIFY ANSWER
+            </button>
+
+            <button class="verify-btn end-btn" onclick="endChallenge()">
+                END CHALLENGE
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RESULT PAGE -->
+
+    <div class="glass hidden" id="resultPage">
+
+        <div class="result-icon" id="resultIcon">🎉</div>
+
+        <h1 class="result-title" id="resultTitle">OUTSTANDING!</h1>
+
+        <p class="result-message" id="resultMessage">
+            You're a Balance Master!
+        </p>
+
+        <div class="result-score-box">
+            <div class="result-score" id="resultScore">4/4</div>
+            <div class="result-percent" id="resultPercent">100%</div>
+        </div>
+
+        <div class="result-bar-track">
+            <div class="result-bar-fill" id="resultBarFill"></div>
+        </div>
+
+        <div style="text-align:center">
+
+            <button class="verify-btn" onclick="retryChallenge()">
+                TRY AGAIN
+            </button>
+
+            <button class="verify-btn end-btn" onclick="goHome()">
+                BACK HOME
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- LEADERBOARD PAGE -->
+
+    <div class="glass hidden" id="leaderboardPage">
+
+        <h1 class="logo">LEADERBOARD</h1>
+
+        <div id="leaderboardList" class="leaderboard-list">
+            <!-- filled by JS -->
+        </div>
+
+        <div style="text-align:center;margin-top:14px">
+            <button class="verify-btn end-btn" onclick="goHome()">
+                BACK
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="confetti-layer" id="confettiLayer"></div>
+
+<div id="correctScreen" class="result correct">
+    ✅ CORRECT
+</div>
+
+<div id="wrongScreen" class="result wrong">
+    ❌ INCORRECT
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
