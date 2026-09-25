@@ -104,3 +104,16 @@ connection is used at any point.
   **RECALIBRATE** on the home screen. If it still misfires with small
   natural wobble, open `config.json` and raise `"angle_threshold"` a bit
   (e.g. from `6.0` to `8.0`).
+
+
+
+
+  Scenario 1 — Installing a rooftop solar panel
+
+An engineering team is asked to install a heavy solar panel on the roof of a school. Before lifting anything, they first use the Clinometer Model to measure the building's height — by measuring the horizontal distance from where they're standing to the base of the building, and the angle of elevation up to the roof, they calculate the height using Height = Horizontal Distance × tan θ. Now they know exactly how far up the crane needs to lift the panel.
+
+Next, they attach the solar panel to one side of the crane's boom and a counterweight to the other side. Before lifting, the crane's built-in camera watches two markers on the boom, calculates the moment on each side (Load × Distance from Pivot), and checks whether they're equal. If they aren't — like our red-LED demonstration — the crane refuses to lift, and the operator adjusts the counterweight's position until the AI shows a green light. Only then does the crane safely lift the solar panel to the correct height and place it on the roof.
+
+Scenario 2 — Lifting a steel beam for a flyover under construction
+
+Workers building a flyover need to lift a heavy steel beam onto a pillar. First, they use the clinometer to measure how tall the pillar is, so the crane operator knows exactly how high to raise the beam. Then, as the beam is lifted, a camera mounted on the crane continuously watches the load and the counterweight, calculating the moment of force on both sides in real time — just like our AI Structural Stability Analyzer. If a gust of wind or an uneven load shifts the balance, the camera detects the tilt within a second, the buzzer sounds, and the crane operator stops immediately and re-adjusts — preventing the beam from swinging dangerously or the crane from tipping over. Once the AI confirms the moments are equal again, the lift continues safely until the beam is placed exactly in position on the pillar.
