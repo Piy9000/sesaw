@@ -122,3 +122,40 @@ Workers building a flyover need to lift a heavy steel beam onto a pillar. First,
 Scenario 3 — Online Physics Assessment for Students
 
 A physics teacher wants to check whether her Class 8 students truly understand torque and the moment of force — not just whether they can recite the formula, but whether they can actually apply it. Instead of a plain written test, she uses our EquiMeasure system as an interactive assessment tool. Each student is given a torque problem on their laptop — for example, "a 40 g load sits at Hook 6; where should a 20 g weight go to balance it?" They calculate the answer themselves using Moment of Force = Load × Distance from Pivot, select their answer on the screen, then physically test it by hanging the weight on the real balance beam. The camera and AI instantly confirm whether their calculation was correct — a green light means their physics understanding matches reality, and a red light means their maths and the real world disagree, prompting them to recheck their working. Because every attempt is logged with a name, a score, and a time on the leaderboard, the teacher can immediately see which students have mastered the concept and which ones need extra help — turning a normally abstract, paper-based physics topic into something students can see, touch, and get instant feedback on.
+
+
+
+
+
+
+bat file
+
+
+@echo off
+title EquiMeasure TechZone - Starting...
+color 0A
+
+echo ============================================
+echo   EQUIMEASURE TECHZONE
+echo   Starting the project... please wait
+echo ============================================
+echo.
+echo Make sure the seesaw is LEVEL with no weights
+echo on it right now, before it finishes loading.
+echo.
+
+cd /d "%~dp0"
+
+start "" cmd /k "python app.py"
+
+timeout /t 5 /nobreak >nul
+
+start "" http://127.0.0.1:5000
+
+echo.
+echo If the browser did not open by itself, open
+echo Chrome and go to this address:
+echo.
+echo     http://127.0.0.1:5000
+echo.
+pause
